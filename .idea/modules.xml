@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/System-mapper/System-mapper.iml" filepath="$PROJECT_DIR$/System-mapper/System-mapper.iml" />
+      <module fileurl="file://$PROJECT_DIR$/System-parent.iml" filepath="$PROJECT_DIR$/System-parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/System-service/System-service.iml" filepath="$PROJECT_DIR$/System-service/System-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/System-web/System-web.iml" filepath="$PROJECT_DIR$/System-web/System-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/System-web/System-web.iml" filepath="$PROJECT_DIR$/System-web/System-web.iml" />
+    </modules>
+  </component>
+</project>

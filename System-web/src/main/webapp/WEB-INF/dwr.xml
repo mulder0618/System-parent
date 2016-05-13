@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dwr PUBLIC "-//GetAhead Limited//DTD Direct Web Remoting 3.0//EN" "http://getahead.org/dwr/dwr30.dtd">
+
+<dwr>
+
+    <allow>
+        <!--dwr3提供的一个日志审核过滤器-->
+        <!--<filter class="org.directwebremoting.filter.AuditLogAjaxFilter"/>-->
+
+        <!--这是我配置的一个演示类，javascript="Demo" 表示，我可以在页面中用Demo这个名称指向DwrDemo这个java类，类中的方法可以在前台调用-->
+        <create creator="new" javascript="Demo">
+            <param name="class" value="com.zhx.payment.cmbcpay.service.CmbcMessagePush"/>
+        </create>
+
+
+        <!-- this is a bad idea for live, but can be useful in testing -->
+        <convert converter="exception" match="java.lang.Exception"/>
+        <convert converter="bean" match="java.lang.StackTraceElement"/>
+
+    </allow>
+
+</dwr>

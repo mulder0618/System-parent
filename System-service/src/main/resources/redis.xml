@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:jaxws="http://cxf.apache.org/jaxws"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	    http://www.springframework.org/schema/beans/spring-beans.xsd
+	    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+	    http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+	    http://cxf.apache.org/jaxws
+        http://cxf.apache.org/schemas/jaxws.xsd">
+
+
+    <context:property-placeholder location="classpath:systemconfig.properties"/>
+    <bean id="configProperties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+        <property name="locations">
+            <list>
+                <value>classpath:systemconfig.properties</value>
+            </list>
+        </property>
+    </bean>
+
+
+    <bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">
+        <property name="maxTotal" value="300"></property>
+        <property name="maxIdle" value="100"></property>
+        <property name="maxWaitMillis" value="15000"></property>
+        <property name="minEvictableIdleTimeMillis" value="300000"></property>
+        <property name="numTestsPerEvictionRun" value="3"></property>
+        <property name="timeBetweenEvictionRunsMillis" value="60000"></property>
+    </bean>
+    <bean id="jedisPool" class="redis.clients.jedis.JedisPool" destroy-method="destroy">
+        <!-- config -->
+        <constructor-arg ref="jedisPoolConfig"></constructor-arg>
+        <!-- host -->
+        <constructor-arg value="${redisUrl}"></constructor-arg>
+        <!-- port -->
+        <constructor-arg value="6379"></constructor-arg>
+        <!-- timeout -->
+        <constructor-arg value="15000"></constructor-arg>
+        <!-- password -->
+        <constructor-arg value="${redisPass}"></constructor-arg>
+        <!-- database index -->
+        <constructor-arg value="12"></constructor-arg>
+    </bean>
+
+</beans>
