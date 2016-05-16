@@ -1,4 +1,4 @@
-package com.mulder.service.base.utils;
+package com.mulder.utils;
 
 
 import org.springframework.context.ApplicationContext;
@@ -46,7 +46,7 @@ public class RedisUtil {
 
     public static void main(String[] args){
         RedisUtil redisUtil = RedisUtil.getInstance();
-        redisUtil.setCacheString("test","^_^");
-        System.out.println(redisUtil.getCacheString("test"));
+        redisUtil.setCacheString("demo","^_^");
+        System.out.println(redisUtil.getCacheString("demo"));
     }
 }

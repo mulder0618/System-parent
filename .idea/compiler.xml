@@ -24,6 +24,7 @@
         <processorPath useClasspath="true" />
         <module name="System-mapper" />
         <module name="System-service" />
+        <module name="System-utils" />
       </profile>
       <profile default="false" name="Annotation profile for System-web" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
@@ -37,6 +38,7 @@
       <module name="System-mapper" target="1.5" />
       <module name="System-parent" target="1.5" />
       <module name="System-service" target="1.5" />
+      <module name="System-utils" target="1.5" />
       <module name="System-web" target="1.6" />
     </bytecodeTargetLevel>
   </component>

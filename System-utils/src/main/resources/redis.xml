@@ -11,16 +11,7 @@
 	    http://cxf.apache.org/jaxws
         http://cxf.apache.org/schemas/jaxws.xsd">
 
-
     <context:property-placeholder location="classpath:systemconfig.properties"/>
-    <bean id="configProperties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
-        <property name="locations">
-            <list>
-                <value>classpath:systemconfig.properties</value>
-            </list>
-        </property>
-    </bean>
-
 
     <bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">
         <property name="maxTotal" value="300"></property>
@@ -34,13 +25,13 @@
         <!-- config -->
         <constructor-arg ref="jedisPoolConfig"></constructor-arg>
         <!-- host -->
-        <constructor-arg value="${redisUrl}"></constructor-arg>
+        <constructor-arg value="${redis_url}"></constructor-arg>
         <!-- port -->
-        <constructor-arg value="6379"></constructor-arg>
+        <constructor-arg value="${redis_port}"></constructor-arg>
         <!-- timeout -->
         <constructor-arg value="15000"></constructor-arg>
         <!-- password -->
-        <constructor-arg value="${redisPass}"></constructor-arg>
+        <constructor-arg value="${redis_password}"></constructor-arg>
         <!-- database index -->
         <constructor-arg value="12"></constructor-arg>
     </bean>
