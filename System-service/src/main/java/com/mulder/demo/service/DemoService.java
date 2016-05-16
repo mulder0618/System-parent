@@ -1,6 +1,8 @@
 package com.mulder.demo.service;
 
+import com.mulder.demo.mapper.DemoMapper;
 import com.mulder.utils.RedisUtil;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -9,11 +11,18 @@ import org.springframework.stereotype.Service;
 @Service("demoService")
 public class DemoService {
 
+    @Autowired
+    DemoMapper demoMapper;
+
     public void setRedisString(){
         RedisUtil.getInstance().setCacheString("test","^_^");
     }
 
     public String getRedisString(String key){
         return RedisUtil.getInstance().getCacheString(key);
+    }
+
+    public int testMysqlConnect(){
+        return demoMapper.testCount();
     }
 }

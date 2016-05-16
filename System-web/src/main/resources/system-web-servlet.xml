@@ -24,29 +24,19 @@
         <context:include-filter type="annotation" expression="org.springframework.stereotype.Repository"/>
     </context:component-scan>
 
-    <!--<context:annotation-config />-->
-
     <!-- 开启注解 -->
     <mvc:annotation-driven/>
 
     <!-- 启用Aop AspectJ注解 -->
     <aop:aspectj-autoproxy/>
 
-
     <mvc:default-servlet-handler/>
-
-    <!-- 开启异步任务 verifyExecutor 指定执行线程池 -->
-    <task:annotation-driven executor="verifyExecutor" scheduler="verifyScheduler"/>
-    <!-- spring异步任务线程池  -->
-    <task:executor id="verifyExecutor" pool-size="20-1000" queue-capacity="10" keep-alive="5"/>
-    <!-- spring自带定时任务 -->
-    <task:scheduler id="verifyScheduler" pool-size="3"/>
 
 
     <bean id="viewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
         <property name="viewClass"
                   value="org.springframework.web.servlet.view.JstlView"/>
-        <property name="prefix" value="/WEB-INF/PAGES/"/>
+        <property name="prefix" value="/WEB-INF/pages/"/>
         <property name="suffix" value=".jsp"/>
     </bean>
 
