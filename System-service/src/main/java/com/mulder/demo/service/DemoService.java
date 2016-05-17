@@ -1,10 +1,11 @@
 package com.mulder.demo.service;
 
-import com.mulder.demo.mapper.DemoDao;
-import com.mulder.demo.mapper.DemoMapper;
+import com.mulder.mysql.mapper.demo.DemoMysqlDao;
+import com.mulder.oracle.mapper.demo.DemoOracleDao;
 import com.mulder.utils.RedisUtil;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import javax.annotation.Resource;
 
 /**
  * Created by mulder on 16/5/16.
@@ -12,11 +13,11 @@ import org.springframework.stereotype.Service;
 @Service("demoService")
 public class DemoService {
 
-    @Autowired
-    DemoMapper demoMapper;
+    @Resource(name = "demoMysqlDao")
+    DemoMysqlDao demoMysqlDao;
 
-    @Autowired
-    DemoDao demoDao;
+    @Resource(name = "demoOracleDao")
+    DemoOracleDao demoOracleDao;
 
     public void setRedisString(){
         RedisUtil.getInstance().setCacheString("test","^_^");
@@ -27,7 +28,6 @@ public class DemoService {
     }
 
     public int testMysqlConnect(){
-        return demoDao.test();
-        //return demoMapper.testCount();
+        return demoOracleDao.selectOne("com.mulder.oracle.mapper.demo.DemoOracleMapper.testCount",null);
     }
 }

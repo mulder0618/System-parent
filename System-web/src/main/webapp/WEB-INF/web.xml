@@ -12,7 +12,7 @@
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>
-            classpath:applicationContext-db.xml,classpath:redis.xml;
+            classpath:applicationContext-oracledb.xml,classpath:applicationContext-mysqldb.xml,classpath:multiple-db.xml,classpath:redis.xml;
         </param-value>
     </context-param>
 
