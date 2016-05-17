@@ -28,6 +28,10 @@ public class DemoService {
     }
 
     public int testMysqlConnect(){
+        return demoMysqlDao.selectOne("com.mulder.mysql.mapper.demo.DemoMysqlMapper.testCount",null);
+    }
+
+    public int testOracleConnect(){
         return demoOracleDao.selectOne("com.mulder.oracle.mapper.demo.DemoOracleMapper.testCount",null);
     }
 }

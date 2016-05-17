@@ -19,13 +19,23 @@ public class MultipleDataSourceAspectAdvice {
     @Pointcut("execution(* com.mulder.base.*..*(..))")
     private void daoDirect(){ }//定义一个切入点
 
+    /**
+     * 决定使用何种数据源
+     * @param target
+     */
+    private void databaseDirect(String target){
+        if(target.indexOf("oracle")!=-1){
+            MultipleDataSource.setDataSourceKey("oracleDataSource");
+        }
+        else  if(target.indexOf("mysql")!=-1){
+            MultipleDataSource.setDataSourceKey("mysqlDataSource");
+        }
+    }
 
     @Around("daoDirect()")
     public Object doAround(ProceedingJoinPoint jp) throws Throwable {
-        System.out.println("getClass="+jp.getClass());
-        System.out.println("target="+jp.getTarget());
-        //MultipleDataSource.setDataSourceKey("mySqlDataSource");
-        MultipleDataSource.setDataSourceKey("oracleDataSource");
+        String target = jp.getTarget().toString();
+        this.databaseDirect(target);
         return jp.proceed();
     }
 }

@@ -29,4 +29,11 @@ public class DemoController {
         mv.setViewName("/demo/demo");
         return mv;
     }
+
+    @RequestMapping("/oracledemo")
+    public ModelAndView oracleDemo(ModelAndView mv){
+        System.out.println(demoService.testOracleConnect());
+        mv.setViewName("/demo/demo");
+        return mv;
+    }
 }

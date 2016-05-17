@@ -1,5 +1,6 @@
 package com.mulder.mysql.mapper.demo;
 
+import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -8,5 +9,6 @@ import org.springframework.stereotype.Repository;
 @Repository("demoMysqlMapper")
 public interface DemoMysqlMapper {
 
+    @Select("select count(1) from bank_code")
     int testCount();
 }
