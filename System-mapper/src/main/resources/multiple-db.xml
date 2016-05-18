@@ -32,6 +32,14 @@
 
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="multipleDataSource"/>
+        <property name="plugins">
+            <list>
+                <bean id="mybatisInterceptor" class="com.github.miemiedev.mybatis.paginator.OffsetLimitInterceptor">
+                    <property name="dialectClass"
+                              value="com.github.miemiedev.mybatis.paginator.dialect.MySQLDialect"></property>
+                </bean>
+            </list>
+        </property>
     </bean>
 
     <!-- mybatis.spring自动映射 -->
