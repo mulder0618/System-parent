@@ -11,10 +11,13 @@ import org.springframework.beans.factory.annotation.Autowired;
  */
 public class BaseDao extends SqlSessionDaoSupport {
 
+
     @Autowired
     public void setSqlSessionFactory(SqlSessionFactory sqlSessionFactory){
         super.setSqlSessionFactory(sqlSessionFactory);
     }
+
+
 
     /**
      * 查询单个结果集
@@ -23,10 +26,13 @@ public class BaseDao extends SqlSessionDaoSupport {
      * @param <T>
      * @return
      */
-    public <T>T selectOne(String sqlID, Object queryObject){
+    public <T>T selectOne(String sqlID, Object queryObject) {
         return this.getSqlSession().selectOne(sqlID,queryObject);
     }
 
+    public <T>T selectOne(String sqlID) {
+        return this.getSqlSession().selectOne(sqlID);
+    }
 
 
 

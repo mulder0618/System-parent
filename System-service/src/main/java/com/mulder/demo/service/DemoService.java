@@ -1,7 +1,9 @@
 package com.mulder.demo.service;
 
 import com.mulder.mysql.mapper.demo.DemoMysqlDao;
+import com.mulder.mysql.mapper.demo.DemoMysqlMapper;
 import com.mulder.oracle.mapper.demo.DemoOracleDao;
+import com.mulder.oracle.mapper.demo.DemoOracleMapper;
 import com.mulder.utils.RedisUtil;
 import org.springframework.stereotype.Service;
 
@@ -28,10 +30,12 @@ public class DemoService {
     }
 
     public int testMysqlConnect(){
-        return demoMysqlDao.selectOne("com.mulder.mysql.mapper.demo.DemoMysqlMapper.testCount",null);
+        return  demoMysqlDao.selectOne("testCount");
     }
 
     public int testOracleConnect(){
-        return demoOracleDao.selectOne("com.mulder.oracle.mapper.demo.DemoOracleMapper.testCount",null);
+        return  demoOracleDao.selectOne("com.mulder.oracle.mapper.demo.DemoOracleMapper.testCount",null);
     }
+
+
 }
