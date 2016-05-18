@@ -34,7 +34,7 @@ public class DemoService {
     }
 
     public int testOracleConnect(){
-        return  demoOracleDao.selectOne("com.mulder.oracle.mapper.demo.DemoOracleMapper.testCount",null);
+        return  demoOracleDao.selectOne("testCount",null);
     }
 
 

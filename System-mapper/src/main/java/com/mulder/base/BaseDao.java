@@ -18,6 +18,15 @@ public class BaseDao extends SqlSessionDaoSupport {
     }
 
 
+    /**
+     * 查询单个结果集
+     * @param sqlID
+     * @param <T>
+     * @return
+     */
+    public <T>T selectOne(String sqlID) {
+        return this.getSqlSession().selectOne(sqlID);
+    }
 
     /**
      * 查询单个结果集
@@ -29,11 +38,6 @@ public class BaseDao extends SqlSessionDaoSupport {
     public <T>T selectOne(String sqlID, Object queryObject) {
         return this.getSqlSession().selectOne(sqlID,queryObject);
     }
-
-    public <T>T selectOne(String sqlID) {
-        return this.getSqlSession().selectOne(sqlID);
-    }
-
 
 
 }
