@@ -1,13 +1,13 @@
 package com.mulder.demo.service;
 
 import com.mulder.mysql.mapper.demo.DemoMysqlDao;
-import com.mulder.mysql.mapper.demo.DemoMysqlMapper;
 import com.mulder.oracle.mapper.demo.DemoOracleDao;
-import com.mulder.oracle.mapper.demo.DemoOracleMapper;
-import com.mulder.utils.RedisUtil;
+import com.mulder.utils.cache.RedisUtil;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Created by mulder on 16/5/16.
@@ -37,5 +37,22 @@ public class DemoService {
         return  demoOracleDao.selectOne("testCount",null);
     }
 
+    public List<Map> testMysqlList(){
+        return demoMysqlDao.selectList("testList");
+    }
+
+    public List<Map> testOraclelList(){
+        return demoOracleDao.selectList("testList");
+    }
+
+    public List<Map> testMysqlPagelList(int pageIndex,int pageSize){
+        List<Map> pageList = demoMysqlDao.selectPageList("testList",pageIndex,pageSize);
+        return pageList;
+    }
+
+    public List<Map> testOraclePagelList(int pageIndex,int pageSize){
+        List<Map> pageList = demoOracleDao.selectPageList("testList",pageIndex,pageSize);
+        return pageList;
+    }
 
 }

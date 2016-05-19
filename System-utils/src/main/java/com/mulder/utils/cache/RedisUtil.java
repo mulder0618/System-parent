@@ -1,4 +1,4 @@
-package com.mulder.utils;
+package com.mulder.utils.cache;
 
 
 import org.springframework.context.ApplicationContext;
