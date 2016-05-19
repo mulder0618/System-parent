@@ -30,6 +30,14 @@ public class MultipleDataSourceAspectAdvice {
     @Resource(name = "sqlSessionFactory")
     SqlSessionFactory sqlSessionFactory;
 
+    private void setDialectClass(String dialectClass){
+        //获取当前mybatis拦截器列表
+        List<Interceptor> mybatisInterceptors = sqlSessionFactory.getConfiguration().getInterceptors();
+        Properties mybatisInterceptorProperties = new Properties();
+        mybatisInterceptorProperties.put("dialectClass",dialectClass);
+        mybatisInterceptors.get(0).setProperties(mybatisInterceptorProperties);
+    }
+
     /**
      * 决定使用何种数据源
      * @param target
@@ -38,14 +46,12 @@ public class MultipleDataSourceAspectAdvice {
         if(target.indexOf("oracle")!=-1){
             MultipleDataSource.setDataSourceKey("oracleDataSource");
             //动态修改分页拦截器
-            System.out.println(sqlSessionFactory.getConfiguration().getInterceptors());
-            List<Interceptor> mybatisInterceptors = sqlSessionFactory.getConfiguration().getInterceptors();
-            Properties mybatisInterceptorProperties = new Properties();
-            mybatisInterceptorProperties.put("dialectClass","com.github.miemiedev.mybatis.paginator.dialect.OracleDialect");
-            mybatisInterceptors.get(0).setProperties(mybatisInterceptorProperties);
+            this.setDialectClass("com.github.miemiedev.mybatis.paginator.dialect.OracleDialect");
         }
         else if(target.indexOf("mysql")!=-1){
             MultipleDataSource.setDataSourceKey("mysqlDataSource");
+            //动态修改分页拦截器
+            this.setDialectClass("com.github.miemiedev.mybatis.paginator.dialect.MySQLDialect");
         }
     }
 

@@ -34,6 +34,7 @@
         <property name="dataSource" ref="multipleDataSource"/>
         <property name="plugins">
             <list>
+                <!--默认mysql分页拦截器-->
                 <bean id="mybatisInterceptor" class="com.github.miemiedev.mybatis.paginator.OffsetLimitInterceptor">
                     <property name="dialectClass"
                               value="com.github.miemiedev.mybatis.paginator.dialect.MySQLDialect"></property>
