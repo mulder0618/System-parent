@@ -1,6 +1,7 @@
 package com.mulder.utils.cache;
 
 
+import org.omg.CORBA.Object;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import redis.clients.jedis.Jedis;
@@ -29,7 +30,12 @@ public class RedisUtil {
         return redisUtil;
     }
 
-    public void setCacheString(String key,String val)
+    public boolean exists(String key){
+        Jedis client = jedisPool.getResource();
+        return client.exists(key);
+    }
+
+    public void setCache(String key,String val)
     {
         Jedis client = jedisPool.getResource();
         client.set(key,val);
@@ -37,7 +43,7 @@ public class RedisUtil {
     }
 
 
-    public String  getCacheString(String key)
+    public String  getCache(String key)
     {  Jedis client = jedisPool.getResource();
         String result = client.get(key);
         jedisPool.returnBrokenResource(client);
@@ -46,7 +52,7 @@ public class RedisUtil {
 
     public static void main(String[] args){
         RedisUtil redisUtil = RedisUtil.getInstance();
-        redisUtil.setCacheString("demo","^_^");
-        System.out.println(redisUtil.getCacheString("demo"));
+        redisUtil.setCache("demo","^_^");
+        System.out.println(redisUtil.getCache("demo"));
     }
 }
