@@ -1,4 +1,4 @@
-package com.mulder.aspect;
+package com.mulder.base.aspect;
 
 import com.mulder.base.Mapper;
 import com.mulder.base.MultipleDataSource;

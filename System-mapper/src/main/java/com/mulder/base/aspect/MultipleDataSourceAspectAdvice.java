@@ -1,4 +1,4 @@
-package com.mulder.aspect;
+package com.mulder.base.aspect;
 
 import com.github.miemiedev.mybatis.paginator.OffsetLimitInterceptor;
 import com.mulder.base.MultipleDataSource;

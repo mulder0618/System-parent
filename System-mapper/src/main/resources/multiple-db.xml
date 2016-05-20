@@ -32,6 +32,7 @@
 
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="multipleDataSource"/>
+        <property name="configLocation" value="classpath:mybatis-configuration.xml"></property>
         <property name="plugins">
             <list>
                 <!--默认mysql分页拦截器-->

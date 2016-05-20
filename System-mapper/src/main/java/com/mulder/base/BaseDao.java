@@ -2,13 +2,13 @@ package com.mulder.base;
 
 import com.github.miemiedev.mybatis.paginator.domain.PageBounds;
 import com.github.miemiedev.mybatis.paginator.domain.PageList;
+import com.mulder.utils.cache.RedisUtil;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.aspectj.lang.annotation.Around;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.SqlSessionUtils;
 import org.mybatis.spring.support.SqlSessionDaoSupport;
-import org.omg.CORBA.Object;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.Serializable;
@@ -78,6 +78,17 @@ public class BaseDao extends SqlSessionDaoSupport implements Serializable {
     public <T>T selectOne(String sqlID, Object queryObject) {
         return this.getSqlSession().selectOne(sqlID,queryObject);
     }
+
+    /**
+     * 查询单条结果
+     * @param sqlID
+     * @param queryObject
+     * @param synchronize true返回结果并放入缓存
+     * @return
+     */
+   /* public String selectOneWithCache(String sqlID, Object queryObject, boolean synchronize) {
+
+    }*/
 
 
     /**

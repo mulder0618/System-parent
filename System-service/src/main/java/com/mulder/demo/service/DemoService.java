@@ -6,6 +6,7 @@ import com.mulder.utils.cache.RedisUtil;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -22,37 +23,44 @@ public class DemoService {
     DemoOracleDao demoOracleDao;
 
     public void setRedisString(){
-        RedisUtil.getInstance().setCacheString("test","^_^");
+        RedisUtil.getInstance().setCache("test","^_^");
     }
 
     public String getRedisString(String key){
-        return RedisUtil.getInstance().getCacheString(key);
+        return RedisUtil.getInstance().getCache(key);
     }
 
-    public int testMysqlConnect(){
+    public int getMysqlConnect(){
         return  demoMysqlDao.selectOne("testCount");
     }
 
-    public int testOracleConnect(){
+    public int getOracleConnect(){
         return  demoOracleDao.selectOne("testCount",null);
     }
 
-    public List<Map> testMysqlList(){
+    public List<Map> getMysqlList(){
         return demoMysqlDao.selectList("testList");
     }
 
-    public List<Map> testOraclelList(){
+    public List<Map> getOraclelList(){
         return demoOracleDao.selectList("testList");
     }
 
-    public List<Map> testMysqlPagelList(int pageIndex,int pageSize){
+    public List<Map> getMysqlPagelList(int pageIndex,int pageSize){
         List<Map> pageList = demoMysqlDao.selectPageList("testList",pageIndex,pageSize);
         return pageList;
     }
 
-    public List<Map> testOraclePagelList(int pageIndex,int pageSize){
+    public List<Map> getOraclePagelList(int pageIndex,int pageSize){
         List<Map> pageList = demoOracleDao.selectPageList("testList",pageIndex,pageSize);
         return pageList;
+    }
+
+    public String getOneCache(){
+        Map param = new HashMap();
+        param.put("bankId",1);
+        String cacheResut = demoMysqlDao.selectOne("testOneCache",param);
+        return cacheResut;
     }
 
 }
