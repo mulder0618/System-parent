@@ -102,6 +102,26 @@ public class BaseDao extends SqlSessionDaoSupport implements Serializable {
 
 
     /**
+     * 插入数据
+     * @param sqlID
+     * @param values
+     * @return
+     */
+    public int insert(String sqlID,Object values){
+        return this.getSqlSession().insert(sqlID,values);
+    }
+
+    /**
+     * 更新数据
+     * @param sqlID
+     * @param values
+     * @return
+     */
+    public int update(String sqlID,Object values){
+        return this.getSqlSession().update(sqlID,values);
+    }
+
+    /**
      * 查询有参分页
      * @param sqlID
      * @param queryObject

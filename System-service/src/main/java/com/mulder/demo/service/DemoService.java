@@ -4,6 +4,7 @@ import com.mulder.mysql.mapper.demo.DemoMysqlDao;
 import com.mulder.oracle.mapper.demo.DemoOracleDao;
 import com.mulder.utils.cache.RedisUtil;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.HashMap;
@@ -61,6 +62,27 @@ public class DemoService {
         param.put("bankId",1);
         String cacheResut = demoMysqlDao.selectOne("tesCache",param);
         return cacheResut;
+    }
+
+    public int setCode(){
+        Map values = new HashMap();
+        values.put("bankName","test1");
+        values.put("bankCode","90");
+        return demoMysqlDao.insert("testInsert",values);
+    }
+
+    @Transactional
+    public void testTransaction(){
+        Map values = new HashMap();
+        values.put("bankName","test1");
+        values.put("bankCode","90");
+        demoMysqlDao.insert("testInsert",values);
+        Map valuesRollback = new HashMap();
+        valuesRollback.put("bankName","test1");
+        values.put("bankCode","91");
+        //valuesRollback.put("bankCode","46546464646ghfdgdfgdsfsdfsdfsdfsdfsdfsdfsdfdfs64");
+        demoMysqlDao.insert("testInsert",valuesRollback);
+        int a = 3/0;
     }
 
 }

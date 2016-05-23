@@ -70,4 +70,19 @@ public class DemoController {
         mv.setViewName("/demo/demo");
         return mv;
     }
+
+    @RequestMapping("/mysqlinsertdemo")
+    public ModelAndView mysqlInsertDemo(ModelAndView mv){
+        System.out.println(demoService.setCode());
+        mv.setViewName("/demo/demo");
+        return mv;
+    }
+
+    @RequestMapping("/mysqltransactiondemo")
+    public ModelAndView mysqlTransactionDemo(ModelAndView mv){
+        demoService.testTransaction();
+        mv.setViewName("/demo/demo");
+        return mv;
+    }
+
 }

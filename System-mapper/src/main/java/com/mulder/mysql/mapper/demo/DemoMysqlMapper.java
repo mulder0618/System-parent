@@ -23,4 +23,7 @@ public interface DemoMysqlMapper {
     @Select("select bankname from bank_code where id=#{bankId}")
     @Options(useCache = true, flushCache = false, timeout = 10000)
     String tesCache(int bnakId);
+
+    @Insert("insert into bank_code (bankname,bankcode) values(#{bankName},#{bankCode})")
+    int testInsert();
 }
