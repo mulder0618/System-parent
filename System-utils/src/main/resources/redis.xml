@@ -21,7 +21,7 @@
         <property name="numTestsPerEvictionRun" value="3"></property>
         <property name="timeBetweenEvictionRunsMillis" value="60000"></property>
     </bean>
-    <bean id="jedisPool" class="redis.clients.jedis.JedisPool" destroy-method="destroy">
+    <bean id="jedisPool" class="redis.clients.jedis.JedisPool" destroy-method="destroy" scope="prototype">
         <!-- config -->
         <constructor-arg ref="jedisPoolConfig"></constructor-arg>
         <!-- host -->

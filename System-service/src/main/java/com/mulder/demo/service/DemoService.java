@@ -23,11 +23,11 @@ public class DemoService {
     DemoOracleDao demoOracleDao;
 
     public void setRedisString(){
-        RedisUtil.getInstance().setCache("test","^_^");
+        new RedisUtil().setCache("test","^_^");
     }
 
     public String getRedisString(String key){
-        return RedisUtil.getInstance().getCache(key);
+        return new RedisUtil().getCache(key);
     }
 
     public int getMysqlConnect(){
@@ -56,10 +56,10 @@ public class DemoService {
         return pageList;
     }
 
-    public String getOneCache(){
+    public String getCacheResult(){
         Map param = new HashMap();
         param.put("bankId",1);
-        String cacheResut = demoMysqlDao.selectOne("testOneCache",param);
+        String cacheResut = demoMysqlDao.selectOne("tesCache",param);
         return cacheResut;
     }
 

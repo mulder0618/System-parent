@@ -64,9 +64,9 @@ public class DemoController {
     }
 
 
-    @RequestMapping("/mysqlonecachedemo")
+    @RequestMapping("/mysqlcachedemo")
     public ModelAndView mysqlOnecacheDemo(ModelAndView mv){
-        System.out.println(demoService.getOneCache());
+        System.out.println(demoService.getCacheResult());
         mv.setViewName("/demo/demo");
         return mv;
     }

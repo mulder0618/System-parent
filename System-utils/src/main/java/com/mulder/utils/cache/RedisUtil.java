@@ -12,12 +12,16 @@ import redis.clients.jedis.JedisPool;
  */
 public class RedisUtil {
 
-    private static JedisPool jedisPool = null;
-    private static RedisUtil redisUtil = null;
+    private JedisPool jedisPool = null;
+    //private static RedisUtil redisUtil = null;
 
-    private RedisUtil() {}
+    public RedisUtil() {
+        ApplicationContext ctx = new ClassPathXmlApplicationContext(new String[]{"redis.xml"});
+        jedisPool = (JedisPool) ctx.getBean("jedisPool");
+    }
 
-    public static RedisUtil getInstance(){
+    //单例模式
+/*    public static RedisUtil getInstance(){
         if (jedisPool == null) {
             synchronized (RedisUtil.class) {
                 if (jedisPool == null) {
@@ -28,7 +32,8 @@ public class RedisUtil {
             }
         }
         return redisUtil;
-    }
+    }*/
+
 
     public boolean exists(String key){
         Jedis client = jedisPool.getResource();
@@ -51,8 +56,8 @@ public class RedisUtil {
     }
 
     public static void main(String[] args){
-        RedisUtil redisUtil = RedisUtil.getInstance();
+       /* RedisUtil redisUtil = RedisUtil.getInstance();
         redisUtil.setCache("demo","^_^");
-        System.out.println(redisUtil.getCache("demo"));
+        System.out.println(redisUtil.getCache("demo"));*/
     }
 }

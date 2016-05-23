@@ -79,17 +79,6 @@ public class BaseDao extends SqlSessionDaoSupport implements Serializable {
         return this.getSqlSession().selectOne(sqlID,queryObject);
     }
 
-    /**
-     * 查询单条结果
-     * @param sqlID
-     * @param queryObject
-     * @param synchronize true返回结果并放入缓存
-     * @return
-     */
-   /* public String selectOneWithCache(String sqlID, Object queryObject, boolean synchronize) {
-
-    }*/
-
 
     /**
      * 查询无参列表
