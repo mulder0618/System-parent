@@ -85,4 +85,10 @@ public class DemoController {
         return mv;
     }
 
+    @RequestMapping("/bootstrapdemo")
+    public ModelAndView bootstrapDemo(ModelAndView mv){
+        mv.setViewName("/demo/bootstrap");
+        return mv;
+    }
+
 }
