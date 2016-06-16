@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -89,6 +91,18 @@ public class DemoController {
     public ModelAndView bootstrapDemo(ModelAndView mv){
         mv.setViewName("/demo/bootstrap");
         return mv;
+    }
+
+    public static void main(String[] args){
+        List list = new ArrayList();
+        Map map;
+        for(int i=0;i<10;i++){
+            map = new HashMap();
+            map.put("title",i);
+            list.add(map);
+        }
+        System.out.println(list.toString());
+        //程序解释 如果map在for循环之外建立 map只有一个对象引用,list.add实际保存为数组方式  数组保存了对象的引用 map不在内部防止建立多个无用的引用节省栈空间
     }
 
 }
